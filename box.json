@@ -1,0 +1,9 @@
+{
+  "main": "api.php",
+  "stub": false,
+  "output": "php-crud-api.phar",
+  "check-requirements": false,
+  "directories": [
+    "vendor"
+  ]
+}
