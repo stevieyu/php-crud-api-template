@@ -1,9 +1,21 @@
 {
-  "main": "api.php",
+  "main": "vendor/autoload.php",
   "stub": false,
-  "output": "php-crud-api.phar",
+  "output": "vendor.phar",
   "check-requirements": false,
-  "directories": [
-    "vendor"
+  "compression": "GZ",
+  "finder": [
+    {
+      "name": "/.*\\.php|.*\\.json/",
+      "exclude": [
+        "doc",
+        "test",
+        "test_old",
+        "tests",
+        "Tests",
+        "vendor-bin"
+      ],
+      "in": "vendor"
+    }
   ]
 }
