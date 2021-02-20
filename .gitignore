@@ -1,0 +1,13 @@
+.idea/
+.vscode/
+.cache
+/coverage/
+/vendor/
+/logs/*
+!/logs/README.md
+.phpunit.result.cache
+
+*.db
+*.phar
+*.zip
+*.gz

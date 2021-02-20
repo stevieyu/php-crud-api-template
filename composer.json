@@ -1,0 +1,35 @@
+{
+    "name": "stevie/php-crud-api",
+    "authors": [
+        {
+            "name": "Stevie",
+            "email": "yzm629@sina.cn"
+        }
+    ],
+    "require": {
+        "php": ">=7.2|>=8",
+        "ext-json": "*",
+        "mevdschee/php-crud-api": "^2.9"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5|^6"
+    },
+    "scripts": {
+        "dev": "php -S 127.0.0.1:8080 api.php",
+        "start": "php -S 127.0.0.1:8080 output/api.phar",
+        "box": [
+            "composer update --no-dev",
+            "../../tools/box.phar compile",
+            "composer update"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.2.5"
+        }
+    }
+}
