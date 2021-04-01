@@ -8,5 +8,8 @@
     ],
     "require": {
         "mevdschee/php-crud-api": "^2.9"
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 api.php"
     }
 }
