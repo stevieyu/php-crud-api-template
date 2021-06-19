@@ -6,7 +6,7 @@
   "compression": "GZ",
   "finder": [
     {
-      "name": "/.*\\.php|.*\\.json/",
+      "name": "/.*\\.php|.*\\.json|.*\\.yaml|.*\\.xml/",
       "exclude": [
         "doc",
         "test",
