@@ -3,6 +3,7 @@
   "stub": false,
   "output": "vendor.phar",
   "check-requirements": false,
+  "dump-autoload": false,
   "compression": "GZ",
   "finder": [
     {
@@ -17,5 +18,9 @@
       ],
       "in": "vendor"
     }
+  ],
+  "compactors": [
+    "KevinGH\\Box\\Compactor\\Php",
+    "KevinGH\\Box\\Compactor\\Json"
   ]
 }

@@ -7,10 +7,10 @@ use Tqdev\PhpCrudApi\ResponseUtils;
 use Tqdev\PhpCrudApi\Config;
 use Tqdev\PhpCrudApi\Api;
 
-require file_exists('./vendor.phar') ? './vendor.phar' : './vendor/autoload.php' ;
+require file_exists('./vendor.phar') ? './vendor.phar' : './vendor/autoload.php';
 
 $request_url = $_SERVER['REQUEST_URI'] ?? '';
-if($request_url === '/api/docs'){
+if ($request_url === '/api/docs') {
     echo file_get_contents('./api-docs.html');
     return;
 }
@@ -22,10 +22,14 @@ $config = new Config([
     'database' => 'sdm688990573_db',
     'basePath' => '/api',
     'cacheTime' => 1,
-    'cachePath' => './.cache',
-    'middlewares' => 'cors,errors,apiKeyDbAuth',
-	'cors.allowedOrigins' => '*',
-	'cors.allowHeaders' => 'X-Authorization'
+    'cachePath' => __DIR__.'.cache',
+    'middlewares' => 'cors,errors,apiKeyDbAuth,authorization',
+    'apiKeyDbAuth.mode' => 'optional',
+    'authorization.tableHandler' => function($operation, $tableName) {
+        return in_array($tableName, ['users', 'desig']);
+    },
+    'cors.allowedOrigins' => '*',
+    'cors.allowHeaders' => 'X-Authorization,X-API-Key'
 ]);
 $request = RequestFactory::fromGlobals();
 $ui = new Api($config);
