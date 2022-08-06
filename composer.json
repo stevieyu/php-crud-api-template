@@ -15,6 +15,7 @@
         "symfony/var-dumper": "^5|^6"
     },
     "scripts": {
+        "dev": "php -S 127.0.0.1:8080 api.php",
         "start": "php -S 127.0.0.1:8080 output/api.phar",
         "box": [
             "composer update --no-dev",
