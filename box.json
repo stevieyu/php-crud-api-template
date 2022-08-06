@@ -1,7 +1,7 @@
 {
   "main": "api.php",
   "stub": false,
-  "output": "output/index.php",
+  "output": "output/api.phar",
   "compression": "GZ",
   "files": [
     "api-docs.html"
