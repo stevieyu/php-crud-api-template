@@ -1,13 +1,14 @@
 {
-  "main": "vendor/autoload.php",
+  "main": "api.php",
   "stub": false,
-  "output": "vendor.phar",
-  "check-requirements": false,
-  "dump-autoload": false,
+  "output": "output/index.php",
   "compression": "GZ",
+  "files": [
+    "api-docs.html"
+  ],
   "finder": [
     {
-      "name": "/.*\\.php|.*\\.json|.*\\.yaml|.*\\.xml/",
+      "name": "/.*\\.[php|json|yaml|xml]/",
       "exclude": [
         "doc",
         "test",

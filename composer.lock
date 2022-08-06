@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8e3f41fd737663325f06e054e8c09e9",
+    "content-hash": "f0509279ac8d3844b02be73101adab4a",
     "packages": [
         {
             "name": "mevdschee/php-crud-api",

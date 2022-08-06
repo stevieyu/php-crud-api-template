@@ -8,15 +8,19 @@
     ],
     "require": {
         "php": ">=7.2|>=8",
-        "mevdschee/php-crud-api": "^2.9",
-        "ext-json": "*"
+        "ext-json": "*",
+        "mevdschee/php-crud-api": "^2.9"
     },
     "require-dev": {
         "symfony/var-dumper": "^5|^6"
     },
     "scripts": {
         "start": "php -S 127.0.0.1:8080 api.php",
-        "box": "composer update --no-dev && php ../../tools/box.phar compile"
+        "box": [
+            "composer update --no-dev",
+            "../../tools/box.phar compile",
+            "composer update"
+        ]
     },
     "autoload": {
         "psr-4": {

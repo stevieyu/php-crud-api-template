@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require file_exists('./vendor/autoload.php') ? './vendor/autoload.php' : './vendor.phar';
+require file_exists('./vendor/autoload.php') ? 'vendor/autoload.php' : 'vendor.phar';
 
 use Tqdev\PhpCrudApi\RequestFactory;
 use Tqdev\PhpCrudApi\ResponseUtils;
@@ -15,14 +15,15 @@ if ($request_url === '/api/docs') {
 }
 
 $config = new Config([
-    'address' => 'sdm723416260.my3w.com',
-    'port' => '3306',
-    'username' => 'sdm723416260',
-    'password' => 'QKW7e5YE',
-    'database' => 'sdm723416260_db',
+    'address' => getenv('DB_HOST') ?: 'sdm723416260.my3w.com',
+    'port' => getenv('DB_PORT') ?: '3306',
+    'username' => getenv('DB_USERNAME') ?: 'sdm723416260',
+    'password' => getenv('DB_PASSWORD') ?: 'QKW7e5YE',
+    'database' => getenv('DB_NAME') ?: 'sdm723416260_db',
     'basePath' => '/api',
     'cacheTime' => 1,
-    'cachePath' => __DIR__.'/.cache',
+//    'cachePath' => __DIR__.'/.cache',
+    'cachePath' => '/tmp',
     'middlewares' => 'cors,errors,json',
     'json.tables' => 'pages',
     'json.columns' => 'data',
@@ -45,8 +46,10 @@ $start_time = microtime(true);
 $request = RequestFactory::fromGlobals();
 $ui = new Api($config);
 $response = $ui->handle($request);
-ResponseUtils::output($response);
 
 $end_time = microtime(true);
 $run_time = ($end_time - $start_time) * 1000;
 header('Server-Timing: app;dur='.$run_time);
+
+ResponseUtils::output($response);
+
