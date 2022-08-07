@@ -18,6 +18,8 @@ if ($request_url === '/api/docs') {
     return;
 }
 
+$start_time = microtime(true);
+
 $config = new Config([
     'address' => getenv('DB_HOST') ?: $_ENV['DB_HOST'] ?? 'sdm723416260.my3w.com',
     'port' => getenv('DB_PORT') ?: $_ENV['DB_PORT'] ?? '3306',
@@ -25,14 +27,29 @@ $config = new Config([
     'password' => getenv('DB_PASSWORD') ?: $_ENV['DB_PASSWORD'] ?? 'QKW7e5YE',
     'database' => getenv('DB_NAME') ?: $_ENV['DB_NAME'] ?? 'sdm723416260_db',
     'basePath' => '/api',
-    'cacheTime' => 1,
+    'cacheTime' => 60,
+    'debug' => true,
 //    'cachePath' => __DIR__.'/.cache',
     'cachePath' => getenv('CACHE_PATH') ?: $_ENV['CACHE_PATH'] ?? '/tmp',
-    'middlewares' => 'cors,errors,json',
-//    'json.tables' => 'pages',
+    'middlewares' => 'cors,errors,json,dbAuth,apiKeyDbAuth,authorization',
+
+    'json.tables' => 'pages',
     'json.columns' => 'data',
+
+    'apiKeyDbAuth.mode' => 'optional',
+
+    'dbAuth.mode' => 'optional',
+    'dbAuth.usersTable' => 'users',
+    'dbAuth.usernameColumn' => 'phone',
+    'dbAuth.passwordColumn' => 'api_token',
+
+    'authorization.tableHandler' => function ($operation, $tableName) {
+        return !preg_match('/^(users|order)/', $tableName);
+    },
+
     'cors.allowedOrigins' => '*',
     'cors.allowHeaders' => 'X-Authorization,X-API-Key,Content-Type',
+
     'openApiBase' => json_encode([
         'info' => [
             'title' => 'PHP-CRUD-API',
@@ -45,7 +62,6 @@ $config = new Config([
         ]
     ]),
 ]);
-$start_time = microtime(true);
 
 $request = RequestFactory::fromGlobals();
 $ui = new Api($config);
