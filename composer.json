@@ -26,5 +26,10 @@
     "autoload": {
         "psr-4": {
         }
+    },
+    "config": {
+        "platform": {
+            "php": "7.2"
+        }
     }
 }
