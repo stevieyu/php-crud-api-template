@@ -7,6 +7,13 @@
 
 //$_ENV['CACHE_PATH'] = __DIR__.'/.cache';
 
-//require_once 'output/api.phar';
-require_once 'api.php';
+if(file_exists('./output/api.phar')){
+    require_once 'output/api.phar';
+} else
+if(file_exists('./api.phar')){
+    require_once 'api.phar';
+} else
+if(file_exists('./api.php')){
+    require_once 'api.php';
+} 
 
