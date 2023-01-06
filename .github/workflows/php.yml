@@ -50,4 +50,20 @@ jobs:
     - name: build phar
       run: php box.phar compile
 
+  publish-phar:
+    runs-on: ubuntu-latest
+    name: Publish PHAR
+    needs:
+      - 'build'
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: box-phar
+          path: output
 
+      - name: Upload box.phar
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            output/api.phar
