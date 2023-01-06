@@ -26,13 +26,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-          php-version: '7.2'
-          ini-values: phar.readonly=0
-          tools: composer
-          coverage: none
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-dev
       
