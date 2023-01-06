@@ -48,6 +48,6 @@ jobs:
       run: curl https://github.com/box-project/box/releases/latest/download/box.phar -o box.phar
       
     - name: build phar
-      run: box.phar compile
+      run: php box.phar compile
 
 
