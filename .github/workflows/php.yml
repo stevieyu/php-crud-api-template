@@ -48,7 +48,7 @@ jobs:
       run: curl https://github.com/box-project/box/releases/latest/download/box.phar -o box.phar
       
     - name: build phar
-      run: php box.phar compile
+      run: php box.phar compile && ls -l && ls -l output
       
     - uses: actions/upload-artifact@v3
       name: Upload the PHAR artifact
@@ -57,20 +57,3 @@ jobs:
         path: |
           output/api.phar
 
-  publish-phar:
-    runs-on: ubuntu-latest
-    name: Publish PHAR
-    needs:
-      - 'build'
-    steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: box-phar
-          path: output
-
-      - name: Upload box.phar
-        uses: softprops/action-gh-release@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: |
-            output/api.phar
