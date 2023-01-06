@@ -1,3 +1,3 @@
 # php-crud-api
 
-php ../../tools/box.phar compile
+[![PHP Composer](https://github.com/stevieyu/php-crud-api-template/actions/workflows/php.yml/badge.svg)](https://github.com/stevieyu/php-crud-api-template/actions/workflows/php.yml)
