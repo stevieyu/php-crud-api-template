@@ -43,15 +43,14 @@ jobs:
     - name: build phar
       run: php box.phar compile
       
+    - uses: softprops/action-gh-release@v1
+      with:
+        tag_name: test
+        files: output/api.phar
+      
     - uses: actions/upload-artifact@v3
       name: Upload the PHAR artifact
       with:
         name: phar
         path: |
             output/api.phar
-                        
-    - uses: softprops/action-gh-release@v1
-      with:
-        files: output/api.phar
-
-
