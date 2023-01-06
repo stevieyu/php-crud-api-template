@@ -48,7 +48,7 @@ jobs:
       run: curl -LkSs https://github.com/box-project/box/releases/latest/download/box.phar -o box.phar
       
     - name: build phar
-      run: php box.phar compile && ls -l && ls -l output
+      run: php box.phar compile
       
     - uses: actions/upload-artifact@v3
       name: Upload the PHAR artifact
