@@ -45,7 +45,7 @@ jobs:
           coverage: none
           
     - name: get box
-      run: curl https://github.com/box-project/box/releases/latest/download/box.phar -o box.phar
+      run: curl -LkSs https://github.com/box-project/box/releases/latest/download/box.phar -o box.phar
       
     - name: build phar
       run: php box.phar compile && ls -l && ls -l output
