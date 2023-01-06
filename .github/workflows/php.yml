@@ -49,6 +49,13 @@ jobs:
       
     - name: build phar
       run: php box.phar compile
+      
+    - uses: actions/upload-artifact@v3
+      name: Upload the PHAR artifact
+      with:
+        name: box-phar
+        path: |
+          output/api.phar
 
   publish-phar:
     runs-on: ubuntu-latest
