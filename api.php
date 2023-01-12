@@ -5,9 +5,7 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ERROR);
 
-//require file_exists('./vendor/autoload.php') ? 'vendor/autoload.php' : 'vendor.phar';
-require_once './vendor/mevdschee/php-crud-api/api.include.php';
-//require_once 'https://cdn.jsdelivr.net/gh/mevdschee/php-crud-api/api.include.php';
+require file_exists('./vendor/autoload.php') ? 'vendor/autoload.php' : 'vendor.phar';
 
 //if(!file_exists('api.include.php')) file_put_contents('api.include.php', file_get_contents('https://cdn.jsdelivr.net/gh/mevdschee/php-crud-api/api.include.php'));
 //require_once 'api.include.php';
