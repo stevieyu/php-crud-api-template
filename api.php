@@ -52,8 +52,8 @@ $config = new Config([
     'cachePath' => getenv('CACHE_PATH') ?: $_ENV['CACHE_PATH'] ?? '/tmp',
     'middlewares' => 'cors,errors,json,dbAuth,apiKeyDbAuth,authorization',
 
-    'json.tables' => 'pages',
-    'json.columns' => 'data',
+//    'json.tables' => 'pages',
+//    'json.columns' => 'data',
 
     'apiKeyDbAuth.mode' => 'optional',
 
