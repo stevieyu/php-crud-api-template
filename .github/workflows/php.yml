@@ -50,9 +50,13 @@ jobs:
         files: api.phar
       
     - uses: actions/upload-artifact@v3
-      name: Upload the PHAR artifact
+      name: Upload the api.phar artifact
       with:
-        name: phar
-        path: |
-            api.phar
-            vendor
+        name: api.phar
+        path: api.phar
+            
+    - uses: actions/upload-artifact@v3
+      name: Upload the vendor artifact
+      with:
+        name: vendor
+        path: vendor
