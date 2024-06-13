@@ -7,8 +7,7 @@ error_reporting(E_ERROR);
 
 require file_exists('./vendor/autoload.php') ? 'vendor/autoload.php' : 'vendor.phar';
 
-//if(!file_exists('api.include.php')) file_put_contents('api.include.php', file_get_contents('https://cdn.jsdelivr.net/gh/mevdschee/php-crud-api/api.include.php'));
-//require_once 'api.include.php';
+//if(!file_exists('api.include.php')) file_put_contents('api.include.php', file_get_contents('https://cdn.jsdelivr.net/gh/mevdschee/php-crud-api/api.include.php'));require_once 'api.include.php';
 
 use Tqdev\PhpCrudApi\RequestFactory;
 use Tqdev\PhpCrudApi\ResponseUtils;
