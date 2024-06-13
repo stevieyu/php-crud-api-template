@@ -46,7 +46,7 @@ jobs:
     - uses: softprops/action-gh-release@v2
       with:
         token: ${{ secrets.GH_TOKEN }}
-        tag_name: test
+        tag_name: latest
         files: api.phar
       
     - uses: actions/upload-artifact@v4
