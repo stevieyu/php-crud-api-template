@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Cache Composer packages
       id: composer-cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: vendor
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
@@ -43,19 +43,19 @@ jobs:
     - name: build phar
       run: php box.phar compile
       
-    - uses: softprops/action-gh-release@v1
+    - uses: softprops/action-gh-release@v2
       with:
         token: ${{ secrets.GH_TOKEN }}
         tag_name: test
         files: api.phar
       
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       name: Upload the api.phar artifact
       with:
         name: api.phar
         path: api.phar
             
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       name: Upload the vendor artifact
       with:
         name: vendor
