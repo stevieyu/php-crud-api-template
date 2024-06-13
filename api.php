@@ -37,6 +37,14 @@ EOT;
     exit();
 }
 
+$command = '';
+if((getenv('DB_DRIVER') ?: $_ENV['DB_DRIVER']) == 'mysql') {
+    $offset = date('Z');
+    $absoffset = abs(+$offset);
+    $time_offset = ($offset >= 0 ? '+' : '-') . sprintf("%02d:%02d", intdiv($absoffset, 3600),intdiv(($absoffset % 3600), 60));
+    $command = "SET time_zone='$time_offset';";
+}
+
 $config = new Config([
     'driver' => getenv('DB_DRIVER') ?: $_ENV['DB_DRIVER'] ?? 'sqlite',
     'address' => getenv('DB_HOST') ?: $_ENV['DB_HOST'] ?? 'database.db',
@@ -44,6 +52,7 @@ $config = new Config([
     'username' => getenv('DB_USERNAME') ?: $_ENV['DB_USERNAME'] ?? 'root',
     'password' => getenv('DB_PASSWORD') ?: $_ENV['DB_PASSWORD'] ?? 'password',
     'database' => getenv('DB_NAME') ?: $_ENV['DB_NAME'] ?? 'test',
+    'command' => $command,
     'basePath' => '/api',
     'cacheTime' => 60,
     'debug' => true,
